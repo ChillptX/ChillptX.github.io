@@ -1,26 +1,26 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>单列模式的6种实现方式 | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、单例模式的定义定义： 确保一个类只有一个实例，并提供该实例的全局访问点。这样做的好处是：有些实例，全局只需要一个就够了，使用单例模式就可以避免一个全局使用的类，频繁的创建与销毁，耗费系统资源。二、单例模式的设计要素一个私有构造函数 （确保只能单例类自己创建实例）一个私有静态变量 （确保只有一个实例）一个公有静态函数 （给使用者提供调用方法）简单来说就是，单例类的构造方法不让其他人修改和使用；并">
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>单列模式的6种实现方式 | ChillptX</title><meta name="author" content="ChillptX"><meta name="copyright" content="ChillptX"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、单例模式的定义定义： 确保一个类只有一个实例，并提供该实例的全局访问点。这样做的好处是：有些实例，全局只需要一个就够了，使用单例模式就可以避免一个全局使用的类，频繁的创建与销毁，耗费系统资源。二、单例模式的设计要素一个私有构造函数 （确保只能单例类自己创建实例）一个私有静态变量 （确保只有一个实例）一个公有静态函数 （给使用者提供调用方法）简单来说就是，单例类的构造方法不让其他人修改和使用；并">
 <meta property="og:type" content="article">
 <meta property="og:title" content="单列模式的6种实现方式">
-<meta property="og:url" content="http://example.com/post/7415098f.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:url" content="https://github.com/ChillptX/ChillptX.github.io/post/7415098f.html">
+<meta property="og:site_name" content="ChillptX">
 <meta property="og:description" content="一、单例模式的定义定义： 确保一个类只有一个实例，并提供该实例的全局访问点。这样做的好处是：有些实例，全局只需要一个就够了，使用单例模式就可以避免一个全局使用的类，频繁的创建与销毁，耗费系统资源。二、单例模式的设计要素一个私有构造函数 （确保只能单例类自己创建实例）一个私有静态变量 （确保只有一个实例）一个公有静态函数 （给使用者提供调用方法）简单来说就是，单例类的构造方法不让其他人修改和使用；并">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://github.com/ChillptX/ChillptX.github.io/img/xxx.png">
 <meta property="article:published_time" content="2023-04-11T07:54:51.000Z">
-<meta property="article:modified_time" content="2023-04-11T07:58:04.039Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2023-04-12T03:16:22.323Z">
+<meta property="article:author" content="ChillptX">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/post/7415098f.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
-  root: '/',
+<meta name="twitter:image" content="https://github.com/ChillptX/ChillptX.github.io/img/xxx.png"><link rel="shortcut icon" href="/ChillptX/ChillptX.github.io/img/favicon.png"><link rel="canonical" href="https://github.com/ChillptX/ChillptX.github.io/post/7415098f.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/ChillptX/ChillptX.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/ChillptX/ChillptX.github.io/',
   algolia: undefined,
   localSearch: undefined,
-  translate: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁体","msgToSimplifiedChinese":"简体"},
   noticeOutdate: undefined,
   highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
   copy: {
-    success: 'Copy successfully',
-    error: 'Copy error',
-    noSupport: 'The browser does not support'
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
   },
   relativeDate: {
     homepage: false,
@@ -28,11 +28,11 @@
   },
   runtime: '',
   dateSuffix: {
-    just: 'Just',
-    min: 'minutes ago',
-    hour: 'hours ago',
-    day: 'days ago',
-    month: 'months ago'
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
   },
   copyright: undefined,
   lightbox: 'fancybox',
@@ -56,7 +56,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-04-11 15:58:04'
+  postUpdate: '2023-04-12 11:16:22'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -160,9 +160,176 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">单列模式的6种实现方式</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-04-11T07:54:51.000Z" title="Created 2023-04-11 15:54:51">2023-04-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-04-11T07:58:04.039Z" title="Updated 2023-04-11 15:58:04">2023-04-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="单列模式的6种实现方式"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>一、单例模式的定义定义： 确保一个类只有一个实例，并提供该实例的全局访问点。<br>这样做的好处是：有些实例，全局只需要一个就够了，使用单例模式就可以避免一个全局使用的类，频繁的创建与销毁，耗费系统资源。二、单例模式的设计要素<br>一个私有构造函数 （确保只能单例类自己创建实例）<br>一个私有静态变量 （确保只有一个实例）<br>一个公有静态函数 （给使用者提供调用方法）<br>简单来说就是，单例类的构造方法不让其他人修改和使用；并且单例类自己只创建一个实例，这个实例，其他人也无法修改和直接使用；然后单例类提供一个调用方法，想用这个实例，只能调用。这样就确保了全局只创建了一次实例。三、单例模式的6种实现及各实现的优缺点</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/post/7415098f.html">http://example.com/post/7415098f.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/post/undefined.html" title="first"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">first</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/7415098f.html" title="单列模式的6种实现方式">单列模式的6种实现方式</a><time datetime="2023-04-11T07:54:51.000Z" title="Created 2023-04-11 15:54:51">2023-04-11</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/post/undefined.html" title="first">first</a><time datetime="2023-04-11T07:05:40.000Z" title="Created 2023-04-11 15:05:40">2023-04-11</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/post/undefined.html" title="Hello World">Hello World</a><time datetime="2023-04-11T06:49:18.177Z" title="Created 2023-04-11 14:49:18">2023-04-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/ChillptX/ChillptX.github.io/img/xxx.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/ChillptX/ChillptX.github.io/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/ChillptX/ChillptX.github.io/tags/"><div class="headline">標籤</div><div class="length-num">0</div></a><a href="/ChillptX/ChillptX.github.io/categories/"><div class="headline">分類</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/ChillptX/ChillptX.github.io/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/ChillptX/ChillptX.github.io/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/ChillptX/ChillptX.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/ChillptX/ChillptX.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/ChillptX/ChillptX.github.io/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/ChillptX/ChillptX.github.io/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/ChillptX/ChillptX.github.io/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/ChillptX/ChillptX.github.io/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/ChillptX/ChillptX.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/ChillptX/ChillptX.github.io/" title="ChillptX"><img class="site-icon" src="https://images2.alphacoders.com/130/1306628.png"/><span class="site-name">ChillptX</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/ChillptX/ChillptX.github.io/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/ChillptX/ChillptX.github.io/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/ChillptX/ChillptX.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/ChillptX/ChillptX.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/ChillptX/ChillptX.github.io/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/ChillptX/ChillptX.github.io/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/ChillptX/ChillptX.github.io/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/ChillptX/ChillptX.github.io/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/ChillptX/ChillptX.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">单列模式的6种实现方式</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2023-04-11T07:54:51.000Z" title="發表於 2023-04-11 15:54:51">2023-04-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2023-04-12T03:16:22.323Z" title="更新於 2023-04-12 11:16:22">2023-04-12</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="单列模式的6种实现方式"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>一、单例模式的定义定义： 确保一个类只有一个实例，并提供该实例的全局访问点。<br>这样做的好处是：有些实例，全局只需要一个就够了，使用单例模式就可以避免一个全局使用的类，频繁的创建与销毁，耗费系统资源。<br>二、单例模式的设计要素<br>一个私有构造函数 （确保只能单例类自己创建实例）<br>一个私有静态变量 （确保只有一个实例）<br>一个公有静态函数 （给使用者提供调用方法）<br>简单来说就是，单例类的构造方法不让其他人修改和使用；并且单例类自己只创建一个实例，这个实例，其他人也无法修改和直接使用；然后单例类提供一个调用方法，想用这个实例，只能调用。这样就确保了全局只创建了一次实例。<br>三、单例模式的6种实现及各实现的优缺点<br>（一）懒汉式（线程不安全）<br>实现:</p>
+<pre><code>public class Singleton &#123;
+     	private static Singleton uniqueInstance;
+
+         private Singleton() &#123;
+
+        &#125;
+
+        public static Singleton getUniqueInstance() &#123;
+                if (uniqueInstance == null) &#123;
+                uniqueInstance = new Singleton();
+            &#125;
+            return uniqueInstance;
+        &#125;
+&#125;
+</code></pre>
+<p>说明： 先不创建实例，当第一次被调用时，再创建实例，所以被称为懒汉式。<br>优点： 延迟了实例化，如果不需要使用该类，就不会被实例化，节约了系统资源。<br>缺点： 线程不安全，多线程环境下，如果多个线程同时进入了 if (uniqueInstance &#x3D;&#x3D; null) ，若此时还未实例化，也就是uniqueInstance &#x3D;&#x3D; null，那么就会有多个线程执行 uniqueInstance &#x3D; new Singleton(); ，就会实例化多个实例；<br>（二）饿汉式（线程安全）<br>实现:</p>
+<p>public class Singleton {</p>
+<pre><code>private static Singleton uniqueInstance = new Singleton();
+
+private Singleton() &#123;
+&#125;
+
+public static Singleton getUniqueInstance() &#123;
+    return uniqueInstance;
+&#125;
+</code></pre>
+<p>}<br>（三）懒汉式（线程安全）<br>实现:<br>public class Singleton {<br>    private static Singleton uniqueInstance;</p>
+<pre><code>private static singleton() &#123;
+&#125;
+
+private static synchronized Singleton getUinqueInstance() &#123;
+    if (uniqueInstance == null) &#123;
+        uniqueInstance = new Singleton();
+    &#125;
+    return uniqueInstance;
+&#125;
+</code></pre>
+<p>}<br>说明： 实现和 线程不安全的懒汉式 几乎一样，唯一不同的点是，在get方法上 加了一把 锁。如此一来，多个线程访问，每次只有拿到锁的的线程能够进入该方法，避免了多线程不安全问题的出现。<br>优点： 延迟实例化，节约了资源，并且是线程安全的。<br>缺点： 虽然解决了线程安全问题，但是性能降低了。因为，即使实例已经实例化了，既后续不会再出现线程安全问题了，但是锁还在，每次还是只能拿到锁的线程进入该方***使线程阻塞，等待时间过长。<br>（四）双重检查锁实现（线程安全）<br>实现:<br> public class Singleton {</p>
+<pre><code>private volatile static Singleton uniqueInstance;
+
+private Singleton() &#123;
+&#125;
+
+public static Singleton getUniqueInstance() &#123;
+    if (uniqueInstance == null) &#123;
+        synchronized (Singleton.class) &#123;
+            if (uniqueInstance == null) &#123;
+                uniqueInstance = new Singleton();
+            &#125;
+        &#125;
+    &#125;
+    return uniqueInstance;
+&#125; 
+</code></pre>
+<p> }<br>说明: 双重检查数相当于是改进了 线程安全的懒汉式。线程安全的懒汉式 的缺点是性能降低了，造成的原因是因为即使实例已经实例化，依然每次都会有锁。而现在，我们将锁的位置变了，并且多加了一个检查。 也就是，先判断实例是否已经存在，若已经存在了，则不会执行判断方法内的有锁方法了。 而如果，还没有实例化的时候，多个线程进去了，也没有事，因为里面的方法有锁，只会让一个线程进入最内层方法并实例化实例。如此一来，最多最多，也就是第一次实例化的时候，会有线程阻塞的情况，后续便不会再有线程阻塞的问题。<br>为什么使用 volatile 关键字修饰了 uniqueInstance 实例变量 ？<br>uniqueInstance &#x3D; new Singleton(); 这段代码执行时分为三步：<br>为 uniqueInstance 分配内存空间<br>初始化 uniqueInstance<br>将 uniqueInstance 指向分配的内存地址</p>
+<p>正常的执行顺序当然是 1&gt;2&gt;3 ，但是由于 JVM 具有指令重排的特性，执行顺序有可能变成 1&gt;3&gt;2。<br>单线程环境时，指令重排并没有什么问题；多线程环境时，会导致有些线程可能会获取到还没初始化的实例。<br>例如：线程A 只执行了 1 和 3 ，此时线程B来调用 getUniqueInstance()，发现 uniqueInstance 不为空，便获取 uniqueInstance 实例，但是其实此时的 uniqueInstance 还没有初始化。<br>解决办法就是加一个 volatile 关键字修饰 uniqueInstance ，volatile 会禁止 JVM 的指令重排，就可以保证多线程环境下的安全运行。<br>优点： 延迟实例化，节约了资源；线程安全；并且相对于 线程安全的懒汉式，性能提高了。<br>缺点： volatile 关键字，对性能也有一些影响。<br>（五）静态内部类实现（线程安全）<br>实现:<br> public class Singleton {</p>
+<pre><code>private Singleton() &#123;
+&#125;
+
+private static class SingletonHolder &#123;
+    private static final Singleton INSTANCE = new Singleton();
+&#125;
+
+public static Singleton getUniqueInstance() &#123;
+    return SingletonHolder.INSTANCE;
+&#125;
+</code></pre>
+<p> }<br>说明： 首先，当外部类 Singleton 被加载时，静态内部类 SingletonHolder 并没有被加载进内存。当调用 getUniqueInstance() 方法时，会运行 return SingletonHolder.INSTANCE; ，触发了 SingletonHolder.INSTANCE ，此时静态内部类 SingletonHolder 才会被加载进内存，并且初始化 INSTANCE 实例，而且 JVM 会确保 INSTANCE 只被实例化一次。<br>优点： 延迟实例化，节约了资源；且线程安全；性能也提高了。<br>（六）枚举类实现（线程安全）<br>实现:<br> public enum Singleton {</p>
+<pre><code>INSTANCE;
+
+//添加自己需要的操作
+public void doSomeThing() &#123;
+
+&#125;
+</code></pre>
+<p> }<br>说明： 默认枚举实例的创建就是线程安全的，且在任何情况下都是单例。<br>优点： 写法简单，线程安全，天然防止反射和反序列化调用。</p>
+<p>防止反序列化<br>序列化：把java对象转换为字节序列的过程；<br>反序列化： 通过这些字节序列在内存中新建java对象的过程；<br>说明： 反序列化 将一个单例实例对象写到磁盘再读回来，从而获得了一个新的实例。<br>我们要防止反序列化，避免得到多个实例。<br>枚举类天然防止反序列化。<br>其他单例模式 可以通过 重写 readResolve() 方法，从而防止反序列化，使实例唯一重写 readResolve() :<br> private Object readResolve() throws ObjectStreamException{<br>        return singleton;<br> }<br>四、单例模式的应用场景应用场景举例：<br>网站计数器。<br>应用程序的日志应用。<br>Web项目中的配置对象的读取。<br>数据库连接池。<br>多线程池。<br>……<br>使用场景总结：<br>频繁实例化然后又销毁的对象，使用单例模式可以提高性能。<br>经常使用的对象，但实例化时耗费时间或者资源多，如数据库连接池，使用单例模式，可以提高性能，降低资源损坏。<br>使用线程池之类的控制资源时，使用单例模式，可以方便资源之间的通信。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://github.com/ChillptX/ChillptX.github.io">ChillptX</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="https://github.com/ChillptX/ChillptX.github.io/post/7415098f.html">https://github.com/ChillptX/ChillptX.github.io/post/7415098f.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://github.com/ChillptX/ChillptX.github.io" target="_blank">ChillptX</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/ChillptX/ChillptX.github.io/img/xxx.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/ChillptX/ChillptX.github.io/post/684e1dc6.html" title="Quartz"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Quartz</div></div></a></div><div class="next-post pull-right"><a href="/ChillptX/ChillptX.github.io/post/9271ee57.html" title="first"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">first</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 評論</span></div><div id="comment-switch"><span class="first-comment">Valine</span><span class="switch-btn"></span><span class="second-comment">Disqus</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/ChillptX/ChillptX.github.io/img/xxx.png" onerror="this.onerror=null;this.src='/ChillptX/ChillptX.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ChillptX</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/ChillptX/ChillptX.github.io/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/ChillptX/ChillptX.github.io/tags/"><div class="headline">標籤</div><div class="length-num">0</div></a><a href="/ChillptX/ChillptX.github.io/categories/"><div class="headline">分類</div><div class="length-num">0</div></a></div><a id="card-info-btn" href="https://github.com/ChillptX"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">靓仔先的秃头之旅</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ChillptX/ChillptX.github.io/post/684e1dc6.html" title="Quartz">Quartz</a><time datetime="2023-04-12T03:21:30.000Z" title="發表於 2023-04-12 11:21:30">2023-04-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ChillptX/ChillptX.github.io/post/7415098f.html" title="单列模式的6种实现方式">单列模式的6种实现方式</a><time datetime="2023-04-11T07:54:51.000Z" title="發表於 2023-04-11 15:54:51">2023-04-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ChillptX/ChillptX.github.io/post/9271ee57.html" title="first">first</a><time datetime="2023-04-11T07:05:40.000Z" title="發表於 2023-04-11 15:05:40">2023-04-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ChillptX/ChillptX.github.io/post/4a17b156.html" title="Hello World">Hello World</a><time datetime="2023-04-11T06:49:18.177Z" title="發表於 2023-04-11 14:49:18">2023-04-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By ChillptX</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="簡繁轉換">简</button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直達評論"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到頂部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/ChillptX/ChillptX.github.io/js/utils.js"></script><script src="/ChillptX/ChillptX.github.io/js/main.js"></script><script src="/ChillptX/ChillptX.github.io/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://github.com/ChillptX/ChillptX.github.io/post/7415098f.html'
+    this.page.identifier = '/ChillptX/ChillptX.github.io/post/7415098f.html'
+    this.page.title = '单列模式的6种实现方式'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+
+  document.getElementById('darkmode').addEventListener('click', () => {
+    setTimeout(() => window.disqusReset(), 200)
+  })
+}
+
+if ('Valine' === 'Disqus' || !true) {
+  if (true) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
 POWERMODE.shake = true;
 POWERMODE.mobile = false;
 document.body.addEventListener('input', POWERMODE);
-</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+</script><script>(function(d, w, c) {
+    w.ChatraID = 'chillptX';
+    var s = d.createElement('script');
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+    };
+    s.async = true;
+    s.src = 'https://call.chatra.io/chatra.js';
+    if (d.head) d.head.appendChild(s);
+})(document, window, 'Chatra');
+
+if (true) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      Chatra('openChat')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (true) {
+    function chatBtnHide () {
+      Chatra('hide')
+    }
+    function chatBtnShow () {
+      Chatra('show')
+    }
+  }
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
